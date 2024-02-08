@@ -1,17 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 import java.awt.*;
+
 /**
  *
  * @author Nfax1
  */
 public class Calc extends javax.swing.JFrame {
     
-    double number1=0, number2=0;
-    String operator = null;
-
     /**
      * Creates new form Calc
      */
@@ -52,8 +47,8 @@ public class Calc extends javax.swing.JFrame {
         
         buDel.setBackground(Color.darkGray);
         buDel.setBackground(Color.white);
-        buAc.setBackground(Color.darkGray);
-        buAc.setBackground(Color.white);
+        buC.setBackground(Color.darkGray);
+        buC.setBackground(Color.white);
         
         buDecimal.setBackground(Color.orange);
         buDecimal.setForeground(Color.black);
@@ -72,7 +67,7 @@ public class Calc extends javax.swing.JFrame {
         tf = new javax.swing.JTextField();
         bu9 = new javax.swing.JButton();
         buAns = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        buOpenParen = new javax.swing.JButton();
         bu7 = new javax.swing.JButton();
         bu8 = new javax.swing.JButton();
         bu5 = new javax.swing.JButton();
@@ -84,11 +79,12 @@ public class Calc extends javax.swing.JFrame {
         bu0 = new javax.swing.JButton();
         buDecimal = new javax.swing.JButton();
         buDel = new javax.swing.JButton();
-        buAc = new javax.swing.JButton();
+        buC = new javax.swing.JButton();
         buAdd = new javax.swing.JButton();
         buSub = new javax.swing.JButton();
         buMultiply = new javax.swing.JButton();
         buDivide = new javax.swing.JButton();
+        buClosedParen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,8 +116,13 @@ public class Calc extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton4.setText("jButton1");
+        buOpenParen.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        buOpenParen.setText("(");
+        buOpenParen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buOpenParenActionPerformed(evt);
+            }
+        });
 
         bu7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bu7.setText("7");
@@ -211,11 +212,11 @@ public class Calc extends javax.swing.JFrame {
             }
         });
 
-        buAc.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        buAc.setText("AC");
-        buAc.addActionListener(new java.awt.event.ActionListener() {
+        buC.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        buC.setText("C");
+        buC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buAcActionPerformed(evt);
+                buCActionPerformed(evt);
             }
         });
 
@@ -251,6 +252,14 @@ public class Calc extends javax.swing.JFrame {
             }
         });
 
+        buClosedParen.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        buClosedParen.setText(")");
+        buClosedParen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buClosedParenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -258,11 +267,12 @@ public class Calc extends javax.swing.JFrame {
             .addComponent(tf)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(114, 114, 114)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(buDel, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buAc, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(buOpenParen, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buClosedParen, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buDel, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -298,9 +308,12 @@ public class Calc extends javax.swing.JFrame {
                                 .addComponent(buDecimal, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buAns, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(buAns, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buC, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(75, 75, 75)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -308,12 +321,7 @@ public class Calc extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(tf, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(buDel, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buAc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buAns, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -330,18 +338,26 @@ public class Calc extends javax.swing.JFrame {
                             .addComponent(bu3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bu2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bu1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(buAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buOpenParen, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(69, 69, 69)
-                        .addComponent(buSub, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buMultiply, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buDivide, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bu0, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buDecimal, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                            .addComponent(buSub, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buClosedParen, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(buMultiply, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(buDivide, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bu0, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(buDecimal, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(buC, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(buDel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -398,76 +414,36 @@ public class Calc extends javax.swing.JFrame {
     }//GEN-LAST:event_bu9ActionPerformed
 
     private void buAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buAddActionPerformed
-        // TODO add your handling code here:
-        number1 = Double.parseDouble(tf.getText());
-        tf.setText("");
-        operator = "+";
+        tf.setText(tf.getText() + "+");
     }//GEN-LAST:event_buAddActionPerformed
 
     private void buSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buSubActionPerformed
-        // TODO add your handling code here:
-        number1 = Double.parseDouble(tf.getText());
-        tf.setText("");
-        operator = "-";
+        tf.setText(tf.getText() + "-");
     }//GEN-LAST:event_buSubActionPerformed
 
     private void buMultiplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buMultiplyActionPerformed
-        // TODO add your handling code here:
-        number1 = Double.parseDouble(tf.getText());
-        tf.setText("");
-        operator = "*";
+        tf.setText(tf.getText() + "*");;
     }//GEN-LAST:event_buMultiplyActionPerformed
 
     private void buDivideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buDivideActionPerformed
-        // TODO add your handling code here:
-        number1 = Double.parseDouble(tf.getText());
-        tf.setText("");
-        operator = "/";
+        tf.setText(tf.getText() + "/");
     }//GEN-LAST:event_buDivideActionPerformed
 
     private void buDecimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buDecimalActionPerformed
-        // TODO add your handling code here:
         tf.setText(tf.getText() + ".");
     }//GEN-LAST:event_buDecimalActionPerformed
 
     private void buAnsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buAnsActionPerformed
-        // TODO add your handling code here:
-        number2 = Double.parseDouble(tf.getText());
         
-        double result = 0;
-        
-        // Need to handle user pressing Ans before entering a number
-        
-        
-        // Need to handle user pressing Ans after only entering one number
-        
-        
-        
-        if(operator == "+") {
-            result = number1 + number2;
-        }
-        else if(operator == "-") {
-            result = number1 - number2;
-        }
-        else if(operator == "*") {
-            result = number1 * number2;
-        }
-        else if(operator == "/") {
-            result = number1 / number2;
+        if(!tf.getText().isEmpty()) {
+            double result = EvaluateExpression.evaluate(tf.getText());
+            tf.setText(result + "");
         }
         
-        tf.setText(result + "");
-        operator = null;
         
     }//GEN-LAST:event_buAnsActionPerformed
 
     private void buDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buDelActionPerformed
-        // TODO add your handling code here:
-        tf.setText("");
-    }//GEN-LAST:event_buDelActionPerformed
-
-    private void buAcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buAcActionPerformed
-        // TODO add your handling code here:
         String s = tf.getText();
         
         if(s.length() > 1){
@@ -476,12 +452,23 @@ public class Calc extends javax.swing.JFrame {
         else {
             tf.setText("");
         }
-    }//GEN-LAST:event_buAcActionPerformed
+    }//GEN-LAST:event_buDelActionPerformed
+
+    private void buCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buCActionPerformed
+        tf.setText("");
+    }//GEN-LAST:event_buCActionPerformed
 
     private void bu0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bu0ActionPerformed
-        // TODO add your handling code here:
         tf.setText(tf.getText() + "0");
     }//GEN-LAST:event_bu0ActionPerformed
+
+    private void buOpenParenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buOpenParenActionPerformed
+        tf.setText(tf.getText() + "(");
+    }//GEN-LAST:event_buOpenParenActionPerformed
+
+    private void buClosedParenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buClosedParenActionPerformed
+        tf.setText(tf.getText() + ")");
+    }//GEN-LAST:event_buClosedParenActionPerformed
     
     /**
      * @param args the command line arguments
@@ -529,15 +516,16 @@ public class Calc extends javax.swing.JFrame {
     private javax.swing.JButton bu7;
     private javax.swing.JButton bu8;
     private javax.swing.JButton bu9;
-    private javax.swing.JButton buAc;
     private javax.swing.JButton buAdd;
     private javax.swing.JButton buAns;
+    private javax.swing.JButton buC;
+    private javax.swing.JButton buClosedParen;
     private javax.swing.JButton buDecimal;
     private javax.swing.JButton buDel;
     private javax.swing.JButton buDivide;
     private javax.swing.JButton buMultiply;
+    private javax.swing.JButton buOpenParen;
     private javax.swing.JButton buSub;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField tf;
     // End of variables declaration//GEN-END:variables
