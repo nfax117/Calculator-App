@@ -369,47 +369,38 @@ public class Calc extends javax.swing.JFrame {
     }//GEN-LAST:event_tfActionPerformed
 
     private void bu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bu1ActionPerformed
-        // TODO add your handling code here:
         tf.setText(tf.getText() + "1");
     }//GEN-LAST:event_bu1ActionPerformed
 
     private void bu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bu2ActionPerformed
-        // TODO add your handling code here:
         tf.setText(tf.getText() + "2");
     }//GEN-LAST:event_bu2ActionPerformed
 
     private void bu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bu3ActionPerformed
-        // TODO add your handling code here:
         tf.setText(tf.getText() + "3");
     }//GEN-LAST:event_bu3ActionPerformed
 
     private void bu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bu4ActionPerformed
-        // TODO add your handling code here:
         tf.setText(tf.getText() + "4");
     }//GEN-LAST:event_bu4ActionPerformed
 
     private void bu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bu5ActionPerformed
-        // TODO add your handling code here:
         tf.setText(tf.getText() + "5");
     }//GEN-LAST:event_bu5ActionPerformed
 
     private void bu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bu6ActionPerformed
-        // TODO add your handling code here:
         tf.setText(tf.getText() + "6");
     }//GEN-LAST:event_bu6ActionPerformed
 
     private void bu7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bu7ActionPerformed
-        // TODO add your handling code here:
         tf.setText(tf.getText() + "7");
     }//GEN-LAST:event_bu7ActionPerformed
 
     private void bu8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bu8ActionPerformed
-        // TODO add your handling code here:
         tf.setText(tf.getText() + "8");
     }//GEN-LAST:event_bu8ActionPerformed
 
     private void bu9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bu9ActionPerformed
-        // TODO add your handling code here:
         tf.setText(tf.getText() + "9");
     }//GEN-LAST:event_bu9ActionPerformed
 

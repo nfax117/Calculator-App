@@ -6,8 +6,6 @@ import java.util.Stack;
  * @author Nfax1
  */
 
-// Still needs to parenthesis error handling, and divide by 0 handling.
-
 public class EvaluateExpression {
     
     
@@ -19,6 +17,9 @@ public class EvaluateExpression {
         
         // Variable to track whether negative sign '-' should be considered as negative or subtraction
         boolean isNegative = true;
+        
+        // Variable to track count of open parentheses
+        int openParenCount = 0;
         
         for(int i=0; i<expression.length(); i++) {
             
@@ -50,10 +51,16 @@ public class EvaluateExpression {
             // Check if current character is open parenthesis, if open, just need to push to operators stack
             else if(currChar == '(') {
                 operators.push(currChar);
+                openParenCount += 1;
+                isNegative = true;
             }
             
             // Check if current character is closed parenthesis, if closed, need to solve expression within parenthesis
             else if(currChar == ')') {
+                
+                if (openParenCount == 0) {
+                    throw new ArithmeticException("Invalid Parentheses");
+                }
                                 
                 while (operators.peek() != '(') {
                     char operator = operators.pop();
@@ -65,6 +72,7 @@ public class EvaluateExpression {
                 }
                 
                 operators.pop(); // Pop the opening parenthesis form stack
+                openParenCount -= 1;
             }
             
             // Check if current character is an operator
@@ -86,6 +94,10 @@ public class EvaluateExpression {
                 isNegative = true;
             }
             
+        }
+        
+        if (openParenCount != 0) {
+            throw new ArithmeticException("Invalid Parentheses");
         }
         
         // Keep solving remaining sub expressions
@@ -135,8 +147,6 @@ public class EvaluateExpression {
         }
         
         return true;
-        
     }
-    
     
 }
